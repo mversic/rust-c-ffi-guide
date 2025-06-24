@@ -31,7 +31,7 @@
     - [Caller-Owned Memory Example](#caller-owned-memory-example)
 
 ### Introduction
-Calling an external C function from within a Rust application requires that application to access bytes that originate outside of the application. This involves crossing several important boundaries which we will look at in detail below. Before looking at these boundaries, we will first see how to practically achieve such a function call.
+Calling an external C function from within a Rust application requires that application to access bytes that originate outside of the application. This involves crossing several important boundaries which we will look at in detail below. Before looking at these boundaries, we shall first take a trip to the seaside (C side) of things, as that is what we will be calling into.
 
 ### Quick Start
 To get started with this project, follow these steps:
@@ -136,7 +136,7 @@ int free_buffer(char* buffer)
 ```
 
 ### How FFI Works
-Now that we have seen how to practically achieve calling a C function from Rust, we will zoom in so that we can zoom back out and improve our simple first approach.
+Now that we have seen what makes up the C side of the boundary, we now start our treck over to the Rust side along a slightly theoretical path.
 
 #### Symbols
 A symbol in a binary file is an identifier that points to a memory address where functions, variables, or other program elements are located. In our case, and for FFI bindings in general, the symbol identifying the FFI bindings (`allocate_buffer`, `fill_buffer`, `free_buffer`) are external symbols which the Rust compiler does not generate, but rather marks as imports in the object file.
