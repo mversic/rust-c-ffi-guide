@@ -81,7 +81,7 @@ A header file in C typically declares the types, function prototypes, etc. that 
 
 // Allocate a buffer of the given size
 // Returns NULL on error
-char* allocate buffer(int size);
+char* allocate_buffer(int size);
 
 // Fill a buffer with a patern
 // Returns -1 on error and return size on success
